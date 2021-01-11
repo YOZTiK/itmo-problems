@@ -33,8 +33,7 @@ def printList(arr):
     print()
 
 
-# n = int(input())
-# a = list(map(int, input().split()))
-arr = [12, 11, 13, 5, 6, 7]
-mergeSort(arr)
-printList(arr)
+n = int(input())
+a = list(map(int, input().split()))
+mergeSort(a)
+printList(a)
