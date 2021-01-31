@@ -1,8 +1,7 @@
-lim = (2**31)-1
+constrain = (2**31)-1
 
-
-def min_in_arr(arr, queue):
-    m = lim
+def arr_min(arr, queue):
+    m = constrain
     r = -1
     for index in queue:
         if m > arr[index]:
@@ -12,38 +11,38 @@ def min_in_arr(arr, queue):
     return r
 
 
-n = int(input())
+n = input()
 
-table = []
+matrix = []
 
-for i in range(n):
-    table.append([int(item) for item in input().split()])
+for i in range(int(n)):
+    matrix.append([int(item) for item in input().split()])
 
-res = []
+result = []
 
-for s in range(n):
+for s in range(int(n)):
     q = []
     dist = []
 
-    for i in range(n):
-        dist.append(lim)
+    for i in range(int(n)):
+        dist.append(constrain)
         q.append(i)
 
     dist[s] = 0
 
     while q:
-        u = min_in_arr(dist, q)
+        u = arr_min(dist, q)
         q.remove(u)
 
-        for i in range(n):
-            if table[u][i] != 0:
-                aux = dist[u] + table[u][i]
+        for i in range(int(n)):
+            if matrix[u][i] != 0:
+                aux = dist[u] + matrix[u][i]
                 if aux < dist[i]:
                     dist[i] = aux
 
-    res.append(dist)
+    result.append(dist)
 
-for i in range(n):
-    for j in range(n):
-        print(res[i][j], end=" ")
+for i in range(int(n)):
+    for j in range(int(n)):
+        print(result[i][j], end=" ")
     print("")

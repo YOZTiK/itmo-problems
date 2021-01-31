@@ -1,15 +1,15 @@
-lim = (2 ** 10) + 1
+constrain = (2 ** 10) + 1
 
 
-def min_in_arr(arr, queue):
-    m = lim
-    res = -1
-    for index in queue:
+def arr_min(arr, queueueue):
+    m = constrain
+    result = -1
+    for index in queueueue:
         if m >= arr[index]:
             m = arr[index]
-            res = index
+            result = index
 
-    return res
+    return result
 
 
 dim = [int(item) for item in input().split()]
@@ -18,35 +18,35 @@ n = dim[0]
 s = dim[1] - 1
 d = dim[2] - 1
 
-table = []
+vector = []
 
 for i in range(n):
-    table.append([int(item) for item in input().split()])
+    vector.append([int(item) for item in input().split()])
 
-q = []
+queue = []
 dist = []
 
 for i in range(n):
-    dist.append(lim)
-    q.append(i)
+    dist.append(constrain)
+    queue.append(i)
 
 dist[s] = 0
 
-while q:
-    u = min_in_arr(dist, q)
+while queue:
+    u = arr_min(dist, queue)
 
     if u == d:
-        q = []
+        queue = []
     else:
-        q.remove(u)
+        queue.remove(u)
 
     for i in range(n):
-        if table[u][i] > 0:
-            aux = dist[u] + table[u][i]
+        if vector[u][i] > 0:
+            aux = dist[u] + vector[u][i]
             if aux < dist[i]:
                 dist[i] = aux
 
-if dist[d] == lim:
+if dist[d] == constrain:
     print(-1)
 else:
     print(dist[d])
